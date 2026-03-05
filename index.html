@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" 
+      content="default-src 'self'; 
+               script-src 'self'; 
+               style-src 'self' 'unsafe-inline'; 
+               img-src 'self' data: https:; 
+               font-src 'self' data:;" 
+    />
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/css/style.css">
+    <title>Sistema de gestion de pagina web</title>
+  </head>
+  <body class="body-index">
+    <section class="login-section" id="login-section">
+      <div class="container-sm">
+        <h1 class="text-center title_login">Inicia sesion</h1>
+        <form id="login-form" class="container text-center">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="user" placeholder="Nombre" required>
+            <label for="floatingInput">Nombre de usuario</label>
+          </div>
+          <div class="form-floating">
+            <input type="password" class="form-control" id="pass" placeholder="Contraseña" required>
+            <label for="floatingPassword">Contraseña</label>
+          </div>
+          <button type="submit" id="login-btn" class="btn btn-outline-primary btn-lg boton_login">Iniciar sesion</button>
+        </form>
+      </div>
+    </section>
+
+
+    <section id="main-content" class="d-none main">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand fs-2" href="#">Electricidad Gonzalez</a>
+          <button class="navbar-toggler menu" id="menu" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon">
+              <img src="public/img/menu.png" id="menu-img" alt="menu">
+            </span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Productos
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="categoria.html?cat=electricidad" id="link_el">Electricidad</a></li>
+                  <li><a class="dropdown-item" href="categoria.html?cat=refrigeracion" id="link_ref">Refrigeracion</a></li>
+                  <li><a class="dropdown-item" href="categoria.html?cat=aberturas" id="link_ab">Aberturas</a></li>
+                  <li><a class="dropdown-item" href="categoria.html?cat=cyp" id="link_cyp">Cortinas y portones</a></li>
+                  <li><a class="dropdown-item" href="categoria.html?cat=revestimientos" id="link_rev">Revestimientos</a></li>
+                  <li><a class="dropdown-item" href="categoria.html?cat=construccion" id="link_cons">Construccion</a></li>
+                  <li><a class="dropdown-item" href="categoria.html?cat=amoblamientos" id="link_amob">Amoblamientos</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <form id="logout-form">
+                  <button type="submit" id="logout-btn" class="btn btn-outline-danger">Cerrar Sesión</button>
+                </form>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" disabled="true"/>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+        <div class="container main-div">
+            <h3>Gestión de Productos</h3>
+            <hr>
+                <div id="add-product">
+                    <button class="btn btn-success">Añadir Producto</button>
+                </div>
+                <form id="form-add" enctype="multipart/form-data" class="container-sm bg-primary d-none p-3 mb-3 rounded form-add">
+                  <button type="button" id="close-add" class="btn-close mb-4" aria-label="Close">
+                  </button>
+                  <div class="row">
+                    <div class="col form-floating mb-3 fs-5">
+                      <input type="text" class="form-control fs-5" id="title" placeholder="Titulo" required>
+                      <label for="floatingInput">Titulo</label>
+                    </div>
+                    <div class="col form-floating mb-3 fs-5">
+                      <input type="number" class="form-control fs-5" id="price" placeholder="Precio" min="0" step=".01" required>
+                      <label for="floatingInput">Precio</label>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="input-group div-desc fs-5">
+                      <span class="input-group-text">Descripcion</span>
+                      <textarea class="form-control fs-5" id="desc" aria-label="Descripcion" required></textarea>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col fs-5">
+                      <label for="formFile" class="form-label">Ingresa la imagen del producto</label>
+                      <input class="form-control" accept="image/*" type="file" id="formFile">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col">
+                      <select class="form-select fs-5" id="select-category" aria-label="Categoria">
+                        <option value="electricidad" selected>Electricidad</option>
+                        <option value="revestimientos">Revestimientos</option>
+                        <option value="aberturas">Aberturas</option>
+                        <option value="refrigeracion">Refrigeracion</option>
+                        <option value="construccion">Construccion</option>
+                        <option value="cyp">Cortinas y portones</option>
+                        <option value="amoblamientos">Amoblamientos</option>
+                      </select>
+                    </div>
+                    <div class="col" id="select-type">
+                      <select class="form-select fs-5" id="s-type" aria-label="Tipo">
+                        <option value="i" selected>Instalacion</option>
+                        <option value="l">Iluminacion</option>
+                        <option value="h">Herramientas</option>
+                      </select>
+                    </div>
+                  </div>
+                  <button class="btn btn-success fs-5" type="submit" id="addP">Agregar</button>
+                </form>
+          </div>
+    </section>
+  </body>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="public/js/renderer.js"></script>
+</html>

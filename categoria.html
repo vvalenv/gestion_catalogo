@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" 
+      content="default-src 'self'; 
+               script-src 'self'; 
+               style-src 'self' 'unsafe-inline'; 
+               img-src 'self' data: https:; 
+               font-src 'self' data:;" 
+    />
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/css/style.css">
+    <title>Productos</title>
+  </head>
+<body>
+    <section id="main-category" class="main">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand fs-2" href="index.html">Electricidad Gonzalez</a>
+          <button class="navbar-toggler menu" id="menu" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon">
+              <img src="public/img/menu.png" id="menu-img" alt="menu">
+            </span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Productos
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="categoria.html?cat=electricidad" id="link_el">Electricidad</a></li>
+                  <li><a class="dropdown-item" href="categoria.html?cat=refrigeracion" id="link_ref">Refrigeracion</a></li>
+                  <li><a class="dropdown-item" href="categoria.html?cat=aberturas" id="link_ab">Aberturas</a></li>
+                  <li><a class="dropdown-item" href="categoria.html?cat=cyp" id="link_cyp">Cortinas y portones</a></li>
+                  <li><a class="dropdown-item" href="categoria.html?cat=revestimientos" id="link_rev">Revestimientos</a></li>
+                  <li><a class="dropdown-item" href="categoria.html?cat=construccion" id="link_cons">Construccion</a></li>
+                  <li><a class="dropdown-item" href="categoria.html?cat=amoblamientos" id="link_amob">Amoblamientos</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <form id="logout-form">
+                  <button type="submit" id="logout-btn" class="btn btn-outline-danger">Cerrar Sesión</button>
+                </form>
+              </li>
+            </ul>
+            <form class="d-flex" role="search" id="form-search">
+              <input class="form-control me-2" id="input-search" name="q" type="search" placeholder="Buscar" aria-label="Search"/>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <div class="container-md mt-4 pb-3 div-productos">
+        <h1 id="titulo-categoria" class="mb-3">Cargando...</h1>
+        <div id="contenedor-productos" class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4"></div>
+      </div>
+    </section>
+  </body>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="public/js/renderer-cat.js"></script>
+</html>
