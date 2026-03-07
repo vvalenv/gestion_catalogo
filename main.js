@@ -6,7 +6,6 @@ const __dirname = path.dirname(__filename);
 import { loginConsult } from './model/users_model.js';
 import { addProduct, getProductsByCategory, deleteProduct, getProductById, updateProduct} from './model/products_model.js';
 import Store from 'electron-store';
-import fs from 'fs';
 const store = new Store();
 
 const createWindow = () => {
@@ -15,7 +14,7 @@ const createWindow = () => {
     height: 600,
     minHeight: 400,
     minWidth: 400,
-    icon: path.join(__dirname, '/public/img/logo.png'),
+    icon: path.join(__dirname, '/public/img/logo.ico'),
     webPreferences: {
       preload: path.join(__dirname, '/public/js/preload.js')
     },
